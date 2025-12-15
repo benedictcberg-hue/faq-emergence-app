@@ -1,0 +1,12 @@
+{
+  "name": "faq-emergence-app",
+  "version": "1.0.0",
+  "description": "Self-Learning FAQ Framework with Gemini and Neon/Netlify Functions",
+  "main": "index.html",
+  "scripts": {
+    "start": "netlify dev"
+  },
+  "dependencies": {
+    "pg": "^8.11.3"
+  }
+}
