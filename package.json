@@ -7,6 +7,7 @@
     "dev": "netlify dev",
     "build": "echo 'No build step required'",
     "deploy": "netlify deploy --prod",
+    "test": "node test-connections.js",
     "db:init": "node init-db.js",
     "db:reset": "psql $DATABASE_URL -c 'DROP SCHEMA public CASCADE; CREATE SCHEMA public;' && npm run db:init"
   },
