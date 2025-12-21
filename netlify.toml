@@ -1,0 +1,32 @@
+[build]
+  # No build command needed for this static site with serverless functions
+  publish = "."
+  functions = "netlify/functions"
+
+[functions]
+  # Serverless function settings
+  node_bundler = "esbuild"
+  # Increase timeout for AI generation (max 26s for free tier, 10min for pro)
+  timeout = 26
+
+[[redirects]]
+  # SPA fallback
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false
+  conditions = {Role = ["admin"]}
+
+[dev]
+  # Local development settings
+  command = "echo 'Netlify Dev Server Running'"
+  port = 8888
+  targetPort = 8888
+  publish = "."
+  autoLaunch = true
+  framework = "#static"
+
+# Environment variable settings (configure in Netlify UI or CLI)
+# Required:
+# - DATABASE_URL: PostgreSQL connection string from Neon
+# - GEMINI_API_KEY: Google Gemini API key (optional for testing with mocks)
