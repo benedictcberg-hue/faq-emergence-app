@@ -4,9 +4,9 @@
   "description": "Self-Learning FAQ Framework with Adaptive AI - Built with S-A-F-L-O Architecture",
   "main": "index.html",
   "scripts": {
-    "dev": "netlify dev",
+    "start": "node demo-server.js",
+    "dev": "node demo-server.js",
     "build": "echo 'No build step required'",
-    "deploy": "netlify deploy --prod",
     "test": "node test-connections.js",
     "db:init": "node init-db.js",
     "db:reset": "psql $DATABASE_URL -c 'DROP SCHEMA public CASCADE; CREATE SCHEMA public;' && npm run db:init"
@@ -26,9 +26,7 @@
     "pg": "^8.11.3",
     "dotenv": "^16.3.1"
   },
-  "devDependencies": {
-    "netlify-cli": "^17.10.1"
-  },
+  "devDependencies": {},
   "engines": {
     "node": ">=18.0.0"
   }
