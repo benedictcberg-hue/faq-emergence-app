@@ -160,8 +160,8 @@ function adaptiveGeneration(prompt) {
 
 // HTTP Server
 const server = http.createServer((req, res) => {
-    // Handle serverless function
-    if (req.url === '/.netlify/functions/generate_faq' && req.method === 'POST') {
+    // Handle serverless function (Vercel API format)
+    if (req.url === '/api/generate_faq' && req.method === 'POST') {
         let body = '';
         req.on('data', chunk => { body += chunk.toString(); });
         req.on('end', () => {

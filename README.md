@@ -71,33 +71,41 @@ npm run dev
 
 Visit `http://localhost:8888` to see the app.
 
-## 🌐 Deployment to Netlify
+## 🌐 Deployment to Vercel
 
-### Option 1: Deploy via Git
+### Option 1: Deploy via Git (Recommended)
 
 1. Push your code to GitHub/GitLab/Bitbucket
-2. Go to [Netlify](https://app.netlify.com)
-3. Click "Add new site" → "Import an existing project"
-4. Connect your repository
-5. Configure environment variables in Netlify UI:
+2. Go to [Vercel](https://vercel.com/new)
+3. Click "Import Git Repository"
+4. Select your repository (Vercel auto-detects configuration)
+5. Click "Deploy"
+6. Configure environment variables in Vercel dashboard:
    - `DATABASE_URL`: Your Neon connection string
    - `GEMINI_API_KEY`: Your Gemini API key
+7. Redeploy to apply environment variables
 
 ### Option 2: Deploy via CLI
 
 ```bash
-# Login to Netlify
-npx netlify login
+# Install Vercel CLI
+npm install -g vercel
+
+# Login to Vercel
+vercel login
 
 # Deploy
-npm run deploy
+vercel
+
+# Set environment variables
+vercel env add DATABASE_URL
+vercel env add GEMINI_API_KEY
+
+# Deploy to production
+vercel --prod
 ```
 
-Don't forget to set environment variables:
-```bash
-npx netlify env:set DATABASE_URL "your-connection-string"
-npx netlify env:set GEMINI_API_KEY "your-api-key"
-```
+📚 **See [DEPLOYMENT.md](DEPLOYMENT.md) for complete deployment guide**
 
 ## 📁 Project Structure
 
@@ -108,15 +116,16 @@ faq-emergence-app/
 │   ├── gemini.js              # Gemini API integration
 │   ├── quality.js             # Quality evaluation engine
 │   └── adaptive.js            # Adaptive learning orchestrator
-├── netlify/
-│   └── functions/
-│       └── generate_faq.js    # Serverless function handler
+├── api/                       # Vercel serverless functions
+│   └── generate_faq.js        # FAQ generation API endpoint
 ├── db/
 │   └── schema.sql             # Database schema
 ├── index.html                 # Frontend interface
+├── demo-server.js             # Local development server
 ├── package.json               # Dependencies and scripts
-├── netlify.toml              # Netlify configuration
-└── .env.example              # Environment template
+├── vercel.json                # Vercel configuration
+├── DEPLOYMENT.md              # Deployment guide
+└── .env.example               # Environment template
 ```
 
 ## 🧪 Testing Without API Key
@@ -225,8 +234,8 @@ MIT License - feel free to use this project for your own applications.
 
 - Built with [Google Gemini](https://deepmind.google/technologies/gemini/)
 - Powered by [Neon PostgreSQL](https://neon.tech)
-- Hosted on [Netlify](https://netlify.com)
+- Deployed on [Vercel](https://vercel.com)
 
 ---
 
-**Questions or issues?** Open an issue on GitHub or check the logs in Netlify Functions dashboard.
+**Questions or issues?** Open an issue on GitHub or check the logs in Vercel Functions dashboard.

@@ -376,7 +376,7 @@
             showStatus('Processing your question with adaptive learning...', 'info');
 
             try {
-                const response = await fetch('/.netlify/functions/generate_faq', {
+                const response = await fetch('/api/generate_faq', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ prompt })
