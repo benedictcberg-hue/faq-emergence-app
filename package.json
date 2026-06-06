@@ -1,12 +1,33 @@
 {
   "name": "faq-emergence-app",
-  "version": "1.0.0",
-  "description": "Self-Learning FAQ Framework with Gemini and Neon/Netlify Functions",
+  "version": "2.0.0",
+  "description": "Self-Learning FAQ Framework with Adaptive AI - Built with S-A-F-L-O Architecture",
   "main": "index.html",
   "scripts": {
-    "start": "netlify dev"
+    "start": "node demo-server.js",
+    "dev": "node demo-server.js",
+    "build": "echo 'No build step required'",
+    "test": "node test-connections.js",
+    "db:init": "node init-db.js",
+    "db:reset": "psql $DATABASE_URL -c 'DROP SCHEMA public CASCADE; CREATE SCHEMA public;' && npm run db:init"
   },
+  "keywords": [
+    "faq",
+    "ai",
+    "adaptive-learning",
+    "gemini",
+    "neon",
+    "serverless",
+    "vercel"
+  ],
+  "author": "",
+  "license": "MIT",
   "dependencies": {
-    "pg": "^8.11.3"
+    "pg": "^8.11.3",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

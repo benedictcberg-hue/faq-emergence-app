@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "name": "faq-emergence-app",
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "api/**/*.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ],
+  "env": {
+    "DATABASE_URL": "@database_url",
+    "GEMINI_API_KEY": "@gemini_api_key"
+  },
+  "regions": ["iad1"]
+}
